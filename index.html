@@ -1,0 +1,194 @@
+<html>
+  <head>
+    <!-- font awesome Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Bootstrap Links -->
+    <title>Calculator</title>
+
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script src="pdf.js"></script>
+
+    <meta name="theme-color" content="black" />
+    <link
+      rel="icon"
+      href="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png"
+      type="image/icon type"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+
+    <!-- calculation js -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/jautocalc@1.4.1/dist/jautocalc.js"
+    ></script>
+
+    <script type="text/javascript">
+      $(function () {
+        function autoCalcSetup() {
+          $("form#cart").jAutoCalc("destroy");
+          $("form#cart tr.line_items").jAutoCalc({
+            keyEventsFire: true,
+            decimalPlaces: 2,
+            emptyAsZero: true,
+          });
+          $("form#cart").jAutoCalc({ decimalPlaces: 2 });
+        }
+        autoCalcSetup();
+
+        $("i.remove").on("click", function (e) {
+          e.preventDefault();
+
+          var form = $(this).parents("form");
+          $(this).parents("tr").remove();
+          autoCalcSetup();
+        });
+
+        $("span.row-add").on("click", function (e) {
+          e.preventDefault();
+
+          var $table = $(this).parents("table");
+          var $top = $table.find("tr.line_items").first();
+          var $new = $top.clone(true);
+
+          $new.jAutoCalc("destroy");
+          $new.insertBefore($top);
+          $new.find("input[type=text]").val("");
+          autoCalcSetup();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="container" id="pdf">
+      <h1 class="text-center pt-3 pb-5">Material Quotation</h1>
+      <form id="cart">
+        <table name="cart">
+          <tr>
+            <td colspan="99">
+              <span class="row-add float-right mb-3 btn btn-primary"> + </span>
+            </td>
+          </tr>
+
+          <tr>
+            <th></th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>&nbsp;</th>
+            <th>Item Total</th>
+          </tr>
+          <tr class="line_items">
+            <td>
+              <i
+                class="remove fa fa-remove p-2"
+                style="font-size: 20px; color: red"
+              ></i>
+            </td>
+            <td><input class="form-control" type="text" name="txt1" /></td>
+            <td>
+              <input class="form-control" type="text" name="qty" value="0" />
+            </td>
+            <td>
+              <input class="form-control" type="text" name="price" value="0" />
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                name="item_total"
+                value=""
+                jAutoCalc="{qty} * {price}"
+              />
+            </td>
+          </tr>
+          <tr class="line_items">
+            <td>
+              <i
+                class="remove fa fa-remove p-2"
+                style="font-size: 20px; color: red"
+              ></i>
+            </td>
+            <td><input class="form-control" type="text" name="txt1" /></td>
+            <td>
+              <input class="form-control" type="text" name="qty" value="0" />
+            </td>
+            <td>
+              <input class="form-control" type="text" name="price" value="0" />
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                name="item_total"
+                value=""
+                jAutoCalc="{qty} * {price}"
+              />
+            </td>
+          </tr>
+          <tr class="line_items">
+            <td>
+              <i
+                class="remove fa fa-remove p-2"
+                style="font-size: 20px; color: red"
+              ></i>
+            </td>
+            <td><input class="form-control" type="text" name="txt1" /></td>
+            <td>
+              <input class="form-control" type="text" name="qty" value="0" />
+            </td>
+            <td>
+              <input class="form-control" type="text" name="price" value="0" />
+            </td>
+            <td>&nbsp;</td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                name="item_total"
+                value=""
+                jAutoCalc="{qty} * {price}"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">&nbsp;</td>
+            <td><b>TOTAL</b></td>
+            <td>&nbsp;</td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                name="sub_total"
+                value=""
+                jAutoCalc="SUM({item_total})"
+              />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-lg-7"></div>
+      <div class="col-lg-5">
+        <button class="btn btn-success mt-3" onclick="download()">
+          Download PDF
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

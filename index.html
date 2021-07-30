@@ -59,7 +59,7 @@
           e.preventDefault();
 
           var $table = $(this).parents("table");
-          var $top = $table.find("tr.line_items").first();
+          var $top = $table.find("tr.line_items").last();
           var $new = $top.clone(true);
 
           $new.jAutoCalc("destroy");
@@ -73,7 +73,7 @@
 
   <body>
     <div class="container" id="pdf">
-      <h1 class="text-center pt-3 pb-5">Material Quotation</h1>
+      <h1 class="text-center pt-3 pb-5">AMBIKA FURNITURE</h1>
       <form id="cart">
         <table name="cart">
           <tr>
@@ -94,15 +94,17 @@
             <td>
               <i style="font-size: 20px" class="remove">✔</i>
             </td>
-            <td><input class="form-control" type="text" name="txt1" /></td>
-            <td>
+            <td width="350px">
+              <textarea class="form-control" rows="2"></textarea>
+            </td>
+            <td width="100px">
               <input class="form-control" type="text" name="qty" value="0" />
             </td>
-            <td>
+            <td width="100px">
               <input class="form-control" type="text" name="price" value="0" />
             </td>
             <td>&nbsp;</td>
-            <td>
+            <td width="150px">
               <input
                 class="form-control"
                 type="text"
@@ -116,15 +118,17 @@
             <td>
               <i style="font-size: 20px" class="remove">✔</i>
             </td>
-            <td><input class="form-control" type="text" name="txt1" /></td>
-            <td>
+            <td width="350px">
+              <textarea class="form-control" rows="2"></textarea>
+            </td>
+            <td width="100px">
               <input class="form-control" type="text" name="qty" value="0" />
             </td>
-            <td>
+            <td width="100px">
               <input class="form-control" type="text" name="price" value="0" />
             </td>
             <td>&nbsp;</td>
-            <td>
+            <td width="150px">
               <input
                 class="form-control"
                 type="text"
@@ -138,15 +142,17 @@
             <td>
               <i style="font-size: 20px" class="remove">✔</i>
             </td>
-            <td><input class="form-control" type="text" name="txt1" /></td>
-            <td>
+            <td width="350px">
+              <textarea class="form-control" rows="2"></textarea>
+            </td>
+            <td width="100px">
               <input class="form-control" type="text" name="qty" value="0" />
             </td>
-            <td>
+            <td width="100px">
               <input class="form-control" type="text" name="price" value="0" />
             </td>
             <td>&nbsp;</td>
-            <td>
+            <td width="150px">
               <input
                 class="form-control"
                 type="text"
